@@ -2,7 +2,9 @@ import userRepository from '../repositories/user.repository.js';
 import { hashPassword } from '../utils/hash.js';
 import logger from '../../../common/logger/logger.js';
 import {
-  UserAlreadyExistsError,
+  existingRNumberError,
+  existingEmailError,
+  existingPhoneNumberError,
   MissingNameError,
   MissingEmailError,
   InvalidEmailError,
@@ -38,8 +40,14 @@ export const register = async (
   if (!VALID_ROLES.includes(String(role).trim())) throw InvalidRoleError;
   if (!Array.isArray(unit) || unit.length === 0) throw MissingUnitError;
 
-  const exists = await userRepository.findByRNumber(rNumber);
-  if (exists) throw UserAlreadyExistsError;
+  const existingRNumber = await userRepository.findByRNumber(rNumber);
+  if (existingRNumber) throw existingRNumberError;
+
+  const existingEmail = await userRepository.findByEmail(email);
+  if (existingEmail) throw existingEmailError;
+
+  const existingPhoneNumber = await userRepository.findByPhoneNumber(phoneNumber);
+  if (existingPhoneNumber) throw existingPhoneNumberError;
 
   const hashedPassword = await hashPassword(password);
   logger.info('hasheed password', { correlationId });

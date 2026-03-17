@@ -4,15 +4,15 @@ import { findByRNumber } from './findByRNumber.js';
 import { findByRole } from './findByRole.js';
 import { create } from './create.js';
 import { findByEmail } from './findByEmail.js';
-
+import { findByPhoneNumber } from './findByPhoneNumber.js';
 const userRepository = {
     findAll,
     findById,
     findByRNumber,
     findByRole,
     create,
-    findByEmail
-
+    findByEmail,
+   findByPhoneNumber
 } 
 
 export default userRepository;
