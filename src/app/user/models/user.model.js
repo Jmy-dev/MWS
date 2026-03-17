@@ -31,7 +31,7 @@ const userSchema = new mongoose.Schema({
   },
   role: {
     type: String,
-    enum: ['manager', 'engineer', 'foreman QC', 'foreman AC', 'foreman WL', 'admin'] ,
+    enum: ['manager', 'engineer', 'foreman QC AS' , 'foreman QC WL', 'foreman AC', 'foreman WL', 'admin'] ,
     required: true
   },
   unit: [{

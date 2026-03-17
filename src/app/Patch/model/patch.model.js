@@ -1,8 +1,8 @@
 import mongoose from "mongoose";
 
-const batchSchema = new mongoose.Schema(
+const patchSchema = new mongoose.Schema(
   {
-    batch_no: {
+    patch_no: {
       type: String,
       required: true,
       unique: true,
@@ -69,6 +69,6 @@ const batchSchema = new mongoose.Schema(
   }
 );
 
-const Batch = mongoose.model("Batch", batchSchema);
+const Patch = mongoose.model("Patch", patchSchema);
 
-export default Batch;
+export default Patch;

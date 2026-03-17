@@ -5,6 +5,7 @@ import { requestTimer } from './common/requestTimer/requestTimer.js';
 import errorHandler from './common/error/errorHandler.js';
 import { connectDB } from './common/db/db.js';
 import userRoutes from './app/user/routes.js';
+import patchRoutes from './app/Patch/routes.js';
 const app = express();
 app.use(express.json());
 // Middleware
@@ -16,6 +17,7 @@ app.get('/', (req, res) => {
   res.send('Hello World');
 });
 app.use('/api/users', userRoutes);
+app.use('/api/patches', patchRoutes);
 
 // Error handling middleware (must be last)
 app.use(errorHandler);
