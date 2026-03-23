@@ -6,12 +6,13 @@ import errorHandler from './common/error/errorHandler.js';
 import { connectDB } from './common/db/db.js';
 import userRoutes from './app/user/routes.js';
 import patchRoutes from './app/Patch/routes.js';
+import cors from 'cors';
 const app = express();
 app.use(express.json());
 // Middleware
 app.use(setCorrelationId);
 app.use(requestTimer());
-
+app.use(cors());
 // Routes
 app.get('/', (req, res) => {
   res.send('Hello World');
